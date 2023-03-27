@@ -32,20 +32,19 @@ public class Resources : MonoBehaviour
         _counter.Display();
     }
 
-    public bool TryBuy(int price)
+    public bool Buy(int price)
     {
         if (Coins >= price)
         {
             Coins -= price;
+            OnChangeCoins?.Invoke(Coins);
             _counter.Display();
-            OnChangeCoins.Invoke(Coins);
             return true;
         }
+
         else
         {
             return false;
         }
     }
-
-
 }
